@@ -1,0 +1,291 @@
+PHTHONGOS — FORK JUCE WINDOWS
+Guide d’utilisation détaillé : MANUEL-PHTHONGOS.md (15 chapitres).
+
+Fichiers
+Ouvrir audio ou déposer un audio dans une session sans notes MIDI prépare une transcription. Basic Pitch ONNX est inclus et sélectionné par défaut (CPU, hors ligne).
+La liste unique Moteur permet aussi de choisir MuScriptor · Small / Medium / Large après activation des moteurs tiers et déclaration de leurs fichiers dans Paramètres.
+Les trois curseurs à côté du moteur ajustent la sensibilité des notes, la séparation des attaques et la durée minimale. Après la première analyse, ils actualisent directement les notes depuis le cache après une courte pause, sans nouveau calcul neuronal. Avant cette analyse, ils configurent le calcul à venir.
+Les caches sont conservés par voix dans le PHT et restent utilisables après réouverture, même si un autre stem est chargé en référence. Choisir une voix pour ajuster ses notes ; les autres voix restent intactes. Une confirmation protège ses corrections.
+Avec des notes déjà présentes et un audio associé, Analyser ajoute une nouvelle voix sans remplacer les précédentes, y compris sur un MIDI importé. Ouvrir audio ou déposer un autre stem remplace seulement la référence audio. Ctrl+Z annule l’ajout de voix. Chaque voix transcrite indique son fichier source ; ↺ le recharge en référence, sans recalcul. Si le fichier a été déplacé, retrouver son emplacement. Le chemin est conservé dans le PHT.
+Le menu Fichier permet aussi d’associer/remplacer l’audio, ouvrir/enregistrer un PHT,
+exporter le MIDI et exporter une restitution WAV.
+Les poids GGUF et la banque optionnelle restent séparés de ce dossier.
+Dans Paramètres, « Dossier de projet par défaut » est facultatif et sert aux nouveaux projets seulement.
+« Incrémenter les sauvegardes » (désactivé par défaut) fait créer par Ctrl+S / Enregistrer une version nom_yyyy_mm_dd_hhmmss.pht ; _02, _03 distinguent les sauvegardes de la même seconde.
+Enregistrer sous conserve le choix du nom et devient le dernier dossier du projet. Le nom de base et le dossier sont conservés dans le PHT. Sans incrémentation, Ctrl+S remplace le fichier courant.
+Le menu Projets récents conserve dix fichiers .pht distincts, classés par date de modification décroissante. Il affiche leur nom réel, leur date/heure de modification et leur dossier ; chaque version enregistrée garde sa propre entrée. Effacer la liste ne supprime aucun fichier.
+
+Ajouter un MIDI au projet complète la session courante sans remplacer les notes ni l’audio.
+L’aperçu distingue l’existant en bleu et l’ajout en bronze ; le décalage est exprimé en secondes.
+Chaque partie source est affectée à une voix existante ou à une nouvelle voix nommée.
+Une voix existante impose son instrument ; une nouvelle conserve celui du MIDI, modifiable avant ajout.
+Chaque fichier est lu selon sa propre carte de tempo. L’ensemble de l’ajout s’annule par un seul Ctrl+Z.
+
+Édition
+Flèche : sélectionner par clic ou encadrement. Ctrl+clic : ajouter / retirer de la sélection.
+Maj+glisser dans le vide : sélectionner une plage temporelle.
+Ctrl+glisser une note : dupliquer librement ; Ctrl+Maj+glisser : dupliquer sur un axe.
+Maj+glisser une note : déplacer sur un axe. Les originales restent intactes lors d’une duplication ; Ctrl+Z annule toutes les copies du geste.
+Crayon : poser une note de 500 ms par clic dans le vide ; double-clic vide : ajouter.
+Échap : quitter l’insertion et effacer la sélection.
+Glisser une note : déplacer. Bords gauche/droite : durée. Haut/bas : vélocité au zoom.
+Glisser le corps d’une note déjà sélectionnée déplace tout le groupe sélectionné.
+Le déplacement conserve les intervalles, durées et vélocités ; Ctrl+Z annule le groupe en une fois.
+Alt+clic : supprimer une note. Suppr : supprimer la sélection.
+F : fusionner la sélection compatible. M : muet/audible.
+C maintenu + clic sur une note : scinder au point cliqué (curseur ciseaux).
+Gomme : efface les notes touchées dans la partie active. Molette : diamètre (8 à 512 px). Un passage = une seule annulation Ctrl+Z ; Échap annule le passage en cours.
+Les détails de la note affichent aussi sa durée en ms, actualisée pendant le redimensionnement.
+Les fragments sont jointifs et conservent hauteur, voix, vélocité et mute ; aucun fragment de moins de 10 ms.
+Ctrl+Z annule toute la scission ; Rétablir la refait.
+Ctrl+C copie les notes sélectionnées ; Ctrl+V conserve leurs temps et hauteurs quand la voix destination est différente. Dans la même voix (ou Toutes les parties), la première attaque est collée à la tête de lecture.
+Les hauteurs, espacements, durées, vélocités et mutes individuels sont conservés.
+La partie sélectionnée reçoit les copies ; Toutes les parties conserve les parties d’origine.
+Les copies sont sélectionnées et disposent de nouveaux identifiants. Ctrl+Z annule tout le collage.
+Le presse-papiers de notes reste interne à l’application ; C sans Ctrl conserve la scission.
+Clic droit : écouter, déplacer vers une partie, réaffecter un instrument, fusionner, supprimer.
+Les diagnostics disposent également de leurs actions au clic droit.
+
+Navigation
+Ctrl+molette : zoom homogène du temps et des hauteurs.
+Alt+molette : zoom des hauteurs. Maj+molette : déplacement horizontal.
+Main ou bouton central+glisser : déplacer la vue.
+Double-clic dans la marge audio/hauteurs : revenir au début.
+Le double-clic dans toute la marge gauche revient au début dans les trois vues.
+Les boutons Début et Fin déplacent la tête de lecture et la vue sans modifier le zoom.
+Espace : lecture/pause. Suivre la lecture : déplacer la vue pendant la lecture.
+Le bouton ? en bas à droite ouvre les raccourcis ; Échap ou clic à l’extérieur ferme l’aide.
+
+Affichage
+Le sélecteur de vue propose MIDI seul, Audio + MIDI séparés et Superposition.
+Signal audio ou Spectrogramme choisit le fond audio ; le spectrogramme se calcule sans modèle.
+La superposition utilise une opacité de 20 % par défaut, réglable de 0 à 100 %.
+Le gain visuel initial est de 4,9. Les PHT conservent leurs réglages enregistrés.
+Le gain visuel amplifie l’affichage seulement. Il ne change ni le son ni le MIDI.
+Ce gain est réservé à la superposition ; en Audio + MIDI séparés, le signal conserve son échelle normale.
+Temps, tête de lecture, sélection et zoom restent partagés entre les vues.
+Les fréquences du spectrogramme suivent les hauteurs MIDI sur une échelle logarithmique.
+Le spectrogramme sert de repère acoustique : sa résolution ne sépare pas toujours les graves proches.
+Les réglages d’affichage sont conservés dans le PHT.
+Spectre / registre propose Inferno (défaut), Magma et Viridis, en rendu discret ou contrasté.
+Le contraste spectral atténue les niveaux faibles ; palette et contraste réutilisent le spectre déjà calculé.
+Activer la limite de registre affiche deux bornes déplaçables dans le roll, avec note et fréquence.
+Adapter la plage à la partie reprend son registre MIDI avec deux demi-tons de marge.
+Les plages sont conservées séparément pour chaque partie et pour Toutes les parties, dans le PHT.
+Les bornes limitent réellement les notes manquantes, notes en trop et tenues examinées par Vérifier le MIDI avec l’audio.
+Les autres notes et les harmoniques restent utilisées comme contexte : la plage ne filtre pas le son.
+La recherche acoustique de séries respecte également cette plage.
+Après changement de plage, relancer la vérification réutilise le spectre compatible.
+La comparaison spectrale examine MIDI 0 à 127 (C−1 à G9), limitée uniquement par le registre choisi. L’analyse à 44,1 kHz distingue les attaques à court terme et utilise des fenêtres plus longues pour les graves. Les transitoires renforcent un indice d’attaque mais ne suffisent jamais à prouver une note. Les résultats restent des propositions à écouter.
+Après réglage du gain, la hauteur du signal superposé suit le zoom vertical du roll.
+Le rapport entre hauteur du signal et hauteur des notes reste stable au zoom/dézoom.
+
+Banques sonores
+Le choix suit automatiquement l’instrument de chaque partie : piano droit fourni pour le programme piano,
+MuseScore General HQ pour les voix, les autres instruments et les percussions.
+Une banque installée et mémorisée, placée dans le dossier géré ou près du piano est réutilisée sans copie.
+Les anciens réglages « Piano droit » ne forcent plus les autres instruments à sonner au piano.
+Si General MIDI manque, l’indication près de la lecture ouvre les paramètres au clic.
+Télécharger installe la banque ; Parcourir permet de désigner un fichier déjà présent sur le poste.
+Aucun téléchargement ne démarre automatiquement. Un export WAV nécessitant General MIDI demande son installation.
+
+Visibilité et son des parties
+La corbeille à droite du mute supprime la voix sélectionnée et toutes ses notes, y compris masquées ou muettes, après confirmation du nom et du nombre de notes. Ctrl+Z restaure le tout en une seule fois. Une voix verrouillée reste protégée.
+Le curseur à quatre flèches signale le déplacement d’un groupe de notes sélectionnées.
+L’œil, à gauche du sélecteur, affiche ou masque la voix active, sans changer son son. Chaque voix conserve son état dans le projet.
+Avec Toutes les parties, l’œil affiche ou masque toutes les voix. Changer de voix conserve les états de visibilité.
+Le haut-parleur à droite coupe ou réactive la partie choisie. Choisir une partie pour l’utiliser.
+Ce mute est indépendant des notes coupées à la main : réactiver une partie les laisse muettes.
+Le mute de partie est annulable, sauvegardé dans le PHT et respecté à la lecture et aux exports.
+Changer de voix ne change pas les voix audibles. Le curseur à côté du haut-parleur règle le volume d’écoute de la voix active (0 à 100 % ; double-clic : 100 %). Chaque niveau reste dans le projet, sans modifier les vélocités ni les exports.
+Le clavier horizontal du bas permet de préécouter : clic maintenu, relâchement pour arrêter, glissement entre touches. Instrument et volume de la voix active, même verrouillée ; aucune création de note.
+
+Analyses
+Vérifier le MIDI avec l’audio : manques, notes probablement en trop, tenues fragmentées.
+Les propositions ne changent aucune note avant validation. Les corrections restent annulables.
+Dynamique depuis l’audio : mesure acoustique réutilisée, réglage du niveau, contraste et Min/Max.
+Dynamique : notes manuelles et spectrales admissibles ; application explicite remplace les vélocités, sauf voix verrouillées et percussions. Recalculer depuis l’audio renouvelle seulement les mesures.
+Tonalité/gamme : diagnostic harmonique MIDI ; magenta n’implique pas forcément une fausse note.
+Notes très courtes et séries suspectes : aides de nettoyage avec propositions à écouter.
+
+Enregistrement
+Ctrl+S : enregistrer le projet. Ctrl+Maj+S : enregistrer sous.
+Ctrl+Z : annuler. Ctrl+Maj+Z ou Ctrl+Y : rétablir. Ctrl+A : tout sélectionner.
+Le MIDI exporté contient les modifications acceptées. Le PHT conserve aussi l’état du projet.
+Réverbération et volumes concernent l’écoute et l’export WAV ; ils ne changent pas les notes MIDI.
+
+Cette version est une branche de validation. Voir ETAT-DU-FORK.md pour les vérifications.
+
+Résultats de vérification : chaque catégorie présente une liste compacte.
+Cliquer une ligne cadre le résultat et le met en évidence dans le roll, sans modifier les notes.
+Clic droit sur la note, le fantôme ou la tenue : écouter, corriger ou écarter la proposition.
+
+Lier et Délier
+Sélectionner au moins deux notes, puis L (roll actif) ou clic droit > Lier.
+Lier prolonge vers la prochaine attaque sélectionnée de la même partie.
+Les notes commençant ensemble forment un accord. Les attaques non sélectionnées sont des limites.
+Aucune attaque ou vélocité ne change et aucune fin déjà plus longue n’est raccourcie.
+Le chevauchement vaut 20 ms par défaut ; clic droit > Chevauchement pour le régler de 0 à 500 ms.
+Délier, par clic droit, ramène uniquement les fins dépassant la prochaine attaque sélectionnée à cette attaque.
+Dernier accord de chaque partie inchangé. Ctrl+Z annule toute l’opération ; Rétablir la restaure.
+Le réglage de chevauchement est sauvegardé dans le PHT. Ce chevauchement ne commande pas une articulation legato du sampler.
+
+Indices acoustiques, à vérifier
+L’analyse fournit des indices qui peuvent être erronés : écouter avant d’appliquer.
+Durées / réattaques présente des suggestions de scission et de prolongation.
+Une barre verticale indique une coupure possible ; un contour prolongeant une note indique une fin possible.
+Cliquer la ligne pour atteindre la note, puis clic droit pour écouter, appliquer ou ignorer.
+Les tenues fragmentées peuvent être liées (attaques conservées) ou fusionnées (une seule attaque), selon votre choix.
+Aucune correction automatique. Toute correction appliquée est annulable.
+Les résonances, la réverbération, le vibrato et les harmoniques peuvent rendre les indices ambigus.
+Le moteur utilise les données audio, indépendamment de la palette, de l’opacité et du gain visuel.
+Les bornes de registre et la zone de vérification limitent ces propositions.
+
+Créer un MIDI à partir d’un audio seul, sans transcription
+Ouvrez un audio, puis choisissez le crayon et cliquez dans le roll, ou double-cliquez dans une zone vide avec l’outil de sélection.
+La première saisie crée un MIDI vierge et ajoute votre note, sans modèle ni transcription.
+Le projet passe en mode Édition protégé ; le modèle et Analyser sont masqués pour préserver votre travail.
+L’audio, son calage et vos réglages de vue sont conservés. Audio + MIDI permet d’écouter les deux.
+Le spectrogramme reste utilisable pour dessiner et ajuster vos notes.
+Ctrl+Z retire la dernière note ; revenir à zéro note conserve le projet en mode Édition.
+Enregistrez en PHT pour reprendre le travail, ou exportez en MIDI/WAV après avoir ajouté des notes.
+Ces projets utilisent le format PHT 8 ; ils nécessitent cette version ou une version ultérieure compatible.
+
+Transition des projets
+Les projets de la version hybride restent ouvrables. Le premier enregistrement se fait sous un nouveau nom en PHT8, en conservant le fichier original. Une ouverture refusée affiche la raison dans une boîte de dialogue.
+
+Enregistrer et quitter
+Si vous choisissez le fichier d’origine d’un projet hybride, Phthongos explique la conversion et propose un nom PHT8 distinct. Une erreur d’enregistrement est affichée explicitement ; le projet reste ouvert et non enregistré. Annuler le choix du fichier annule la fermeture. Lecture, Pause, Stop et navigation du transport ne marquent plus le projet comme modifié.
+
+Masque spectral et MIDI guidé
+En vue Spectrogramme, ouvrez « Masque / MIDI guidé ». Le pinceau peint les hauteurs candidates ; la gomme les retire. Chaque geste est annulable par Ctrl+Z. Les zones restent attachées au temps et aux notes pendant le zoom, et sont enregistrées dans le PHT8, par partie ou pour toutes les parties. La flèche permet de revenir à l’édition normale.
+Réglez Grave/Aiguë et choisissez la zone (masque, vue visible ou tout l’audio), puis « Analyser et proposer des notes ». Les harmoniques extérieures au masque restent des indices : le masque ne découpe ni ne modifie le son. Le DSP travaille sur le PCM, indépendamment des couleurs et du gain visuel. Aucun modèle IA n’est nécessaire.
+La courbe et les notes fantômes sont des estimations pour une ligne mélodique dominante, en particulier un stem. Elles peuvent contenir des erreurs de hauteur, d’octave, de durée et de réattaque. Ce n’est pas une séparation d’un orchestre ou une transcription polyphonique complète. Les notes très graves et les passages rapides peuvent rester ambigus.
+Cliquez une proposition pour la localiser, Ctrl+clic pour grouper. Le clic droit sur une note fantôme permet l’écoute, l’ajout ou le rejet. Ajoutez la sélection ou l’ensemble explicitement ; chaque lot ajouté s’annule en une seule opération. Les ajouts vont à la partie sélectionnée, ou à une nouvelle voix « Ligne guidée » lorsque toutes les parties sont sélectionnées. Les propositions deviennent périmées après une modification du document et doivent être recalculées.
+Les vélocités proposées démarrent à 83 et restent modifiables ; elles ne sont pas déduites acoustiquement. Le masque et les notes acceptées sont sauvegardés ; la courbe et les propositions non acceptées se recalculent. L’analyse est annulable et limitée à moins de sept minutes par lancement.
+
+Défauts du spectrogramme
+Sélectionner Spectrogramme applique une opacité de 100 % et un gain visuel de 8,0. Le signal audio retrouve ses propres réglages en revenant à Signal audio. Inferno, Discret et contraste 100 sont les valeurs initiales. Le registre n’est pas limité au départ ; les bornes initiales sont Do2–Do7. L’ouverture d’un PHT respecte les réglages qu’il contient.
+
+Langue de l’application
+Paramètres propose Français / English. Le choix est enregistré dans data/language.json près de l’exécutable et appliqué immédiatement. Il ne dépend pas du projet PHT et ne renomme pas les voix personnelles. L’installateur propose également la langue. Le manuel anglais est MANUAL-EN.md. Les scripts et toutes les commandes de compilation sont documentés dans BUILD.md, à la racine des sources.
+
+Filtrage des propositions guidées
+Le classement combine support harmonique, énergie expliquée, stabilité de hauteur, niveau relatif et contexte temporel. « Probables », « À vérifier » et « Peu plausibles » restent des indices, pas des probabilités de réussite. Les moins plausibles sont masquées initialement, mais restent accessibles. On peut ajouter une catégorie, la sélection ou toutes les propositions visibles. Aucune suppression ou correction MIDI automatique.
+« Favoriser la gamme choisie » est facultatif et désactivé au départ. Il préfère légèrement les notes de la gamme seulement en cas d'ambiguïté acoustique ; il ne quantifie pas les hauteurs et laisse les événements chromatiques convaincants possibles. Choisissez la gamme avant de relancer l'analyse.
+Après ajout, le masque, la courbe et les fantômes se masquent pour retrouver l'édition normale. Ils peuvent être réaffichés séparément ; le masque et les propositions restantes ne sont pas effacés. Les nouveaux réglages sont conservés dans le PHT8.
+
+CHEVAUCHEMENTS DE MÊME HAUTEUR
+Dans Correction / nettoyage, ouvrez « Chevauchements de même hauteur ». La liste concerne les parties visibles et ne nécessite aucune analyse audio. Un clic sur une ligne centre et sélectionne les notes du groupe. Les hachures indiquent uniquement leur portion commune. Clic droit sur cette portion : « Notes superposées », puis sélectionner, écouter ou supprimer individuellement chaque note, même entièrement cachée. Aucune suppression automatique ; Ctrl+Z restaure une suppression.
+
+NAVIGATION CLAVIER
+Piano-roll actif : flèches gauche / droite pour reculer ou avancer de 0,5 seconde ; Maj + flèche pour un pas fin de 50 ms. La tête reste visible en zoom et s’arrête aux limites du morceau. Les champs de saisie et les menus conservent leurs flèches habituelles.
+
+ANALYSE GUIDÉE DU SPECTROGRAMME
+Relancez « Analyser et proposer des notes » pour utiliser les nouvelles règles : noyau harmonique, réattaques locales et traînes de résonance. Les durées et vélocités sont des estimations relatives à vérifier à l’oreille. « Improbables » reste consultable ; aucune correction MIDI automatique.
+
+Analyse guidée V3 : des noyaux spectraux indépendants complètent la courbe de hauteur, notamment pour le piano. Les propositions estiment la fin utile avant la traîne affaiblie, sans garantir le relâchement de touche ; les valeurs rythmiques ne sont pas déduites sans tempo fiable. Relancez l’analyse pour appliquer les nouvelles règles. Le pinceau et la gomme du masque affichent un cercle qui correspond à la zone effectivement sélectionnée, quelle que soit leur taille.
+
+Export WAV : utilise les mêmes banques que la lecture. Sans banque General MIDI, les instruments sont rendus au piano de secours fourni ; le résultat le signale. L’export propose un nom distinct horodaté et indique le chemin créé. Un échec affiche son motif dans une boîte de dialogue et dans le statut. Les fichiers existants et les sources restent protégés.
+
+Banque General MIDI partagée : le chemin choisi est enregistré dans %APPDATA%/Phthongos/soundbank-settings.json, commun aux nouvelles versions C++. Un ancien réglage local valide est récupéré si nécessaire. Sans chemin valide, l’application recherche aussi Documents/player-assets/MuseScore_General_HQ.sf2 et vérifie son empreinte avant activation. La banque reste à cet emplacement ; aucune copie ni nouveau téléchargement n’est nécessaire. Les futurs téléchargements sont placés dans %APPDATA%/Phthongos/soundbanks. Les anciennes versions de l’application conservent leur ancien fonctionnement.
+
+Repères personnels : clic droit dans la timeline pour ajouter un drapeau avec nom facultatif. Survol : nom et instant ; clic : placer la tête de lecture ; glisser : déplacer le repère ; clic droit sur le drapeau : renommer ou supprimer. Échap annule un déplacement en cours. Les repères sont indépendants des notes et de la grille, sauvegardés dans le PHT8 avec leur historique Ctrl+Z/Ctrl+Y.
+Maj + glisser une note ou un groupe : une direction suffisamment nette choisit l’axe et le verrouille jusqu’au lâcher de la souris, même après relâchement de Maj. Vertical : horodatages conservés exactement ; horizontal : hauteurs conservées. Un glisser sans contrainte activée reste libre. Maj + glisser dans le vide conserve la sélection temporelle.
+Sauvegarde : la position mémorisée est bornée à la durée réelle du projet, y compris les notes ajoutées après l’audio. Les cinq secondes de marge d’édition ne bloquent plus l’enregistrement. Aucune note n’est raccourcie par cette correction.
+
+Dupliquer par glisser : maintenir Ctrl + Maj avant de saisir une note. Une direction suffisamment nette choisit l’axe, les petits mouvements diagonaux initiaux étant ignorés. L’axe reste verrouillé jusqu’au lâcher de la souris, même après relâchement de Maj : verticalement, les copies conservent exactement les débuts et fins ; horizontalement, elles conservent les hauteurs. Une note déjà sélectionnée entraîne tout le groupe sélectionné éditable ; une note non sélectionnée est copiée seule. Les originales restent en place et visibles pendant l’aperçu. Au relâchement, les copies sont sélectionnées. Ctrl+Z annule toute la duplication, Ctrl+Y la rétablit ; Échap annule avant relâchement. Un clic sans déplacement ne crée rien. Le presse-papiers et le collage à la tête de lecture restent disponibles ; Maj seul déplace sur un axe.
+
+TEMPO DU PROJET ET CALCULETTE
+Le bouton « Tempo / BPM » à droite des sélecteurs de grille
+permet de déclarer un tempo de 10 à 600 BPM, même avant la transcription.
+Le réglage est mémorisé dans le projet PHT8 et inscrit dans les exports MIDI.
+Changer ce BPM conserve les positions et durées en secondes ; cela ne quantifie
+pas les notes et ne change pas la vitesse de lecture. Les temps MIDI sont arrondis
+à la résolution du fichier. Pour un stem annoncé à 65 BPM, déclarer 65 BPM avant
+l’export permet de donner la bonne référence à l’écriture solfégique.
+Pour un MIDI importé, les tempos d’origine sont conservés par défaut. Choisir un
+tempo fixe remplace explicitement sa carte de tempo, tout en conservant le timing
+réel des notes et contrôleurs. Rechoisir le mode source restaure la carte d’origine.
+La calculette donne les durées des valeurs simples, pointées et en triolets ; elle
+compare aussi une durée en ms à la valeur la plus proche et affiche son écart.
+Cette comparaison utilise le BPM affiché ; elle n’est pas une estimation du tempo
+ni une modification de la partition. Les anciens projets restent compatibles.
+
+GRILLE VISUELLE
+Le sélecteur « Grille » propose Musicale (par défaut), Secondes et Aucune.
+La grille musicale propose 1/4, 1/8 (défaut), 1/16, 1/8T et 1/16T. Les triolets
+ne sont affichés que si vous les choisissez. Les mesures sont plus marquées que
+les temps, eux-mêmes plus marqués que les subdivisions. Les lignes trop rapprochées
+sont masquées au dézoom sans changer la subdivision choisie.
+La règle musicale affiche mesure.temps ; la grille en secondes affiche le temps
+réel avec des subdivisions adaptées au zoom, notamment 500 et 250 ms. « Aucune »
+masque les lignes verticales, en conservant la règle temporelle pour naviguer.
+Le BPM reste modifiable à tout moment. La grille suit le BPM fixe du projet ou
+la carte de tempo du MIDI importé en mode source, ainsi que ses mesures déclarées.
+Sans signature fournie, la référence est 4/4. L'origine musicale est zéro seconde.
+Ces réglages d'affichage sont mémorisés par projet. Aucun snap, quantize ou
+changement des notes ne résulte de l'affichage de la grille. Les déplacements
+manuels et les contraintes d'axe par Maj / Ctrl+Maj restent disponibles.
+
+VOIX VERROUILLEES ET EXPORT MIDI
+Choisir une voix dans le menu des parties, puis cliquer Verrouiller. Répéter pour plusieurs voix. Les notes verrouillées restent visibles en gris, y compris pendant l’édition d’une autre voix. Elles sont protégées contre déplacement, gomme et corrections groupées ; le mute et la lecture restent disponibles. Les verrous sont enregistrés dans le projet. Déverrouiller rend la voix à nouveau éditable. Ctrl+Z peut annuler le verrouillage.
+Exporter MIDI ouvre le choix Toutes les voix, Voix sélectionnée (si une voix est choisie) ou Un fichier par voix. Le dernier choix crée un nouveau sous-dossier Phthongos-voix dans le dossier parent choisi. Chaque fichier garde l’origine temporelle, les instruments et le tempo du projet. Les notes muettes ne sont pas exportées ; verrouiller ne coupe pas le son. Aucun export existant n’est remplacé.
+
+NOTES HORS GAMME PAR VOIX
+Le bandeau Tonalité / gamme indique le total hors gamme et sa répartition par voix dans la portée analysée. En choisissant une seule voix, son nom et son total sont affichés. Détail par voix… présente les hauteurs, positions et durées ; cliquer une note la localise. Chaque voix dispose de sa propre sélection. Les notes verrouillées restent comptées et consultables, mais sont exclues des sélections. La liste est paginée par 50 notes. Ce diagnostic ne déplace ni ne supprime aucune note.
+
+PARCOURS HORS GAMME ET NOUVEAU PROJET
+Régler la gamme / portée précède la sélection. Sélectionner les notes hors gamme analyse et affiche automatiquement les notes en magenta, puis sélectionne les notes éditables concernées. Afficher conserve son rôle de repérage seul. Le magenta vif et son contour contrasté sont réservés à ce diagnostic ; les voix verrouillées restent grises avec le contour magenta et ne sont pas sélectionnées.
+Fichier > Nouveau projet ouvre une session avec une voix Piano vide dans la même fenêtre. Dès la préparation sonore terminée, le clavier et le dessin de notes fonctionnent sans importer de fichier. Si le projet est modifié, choisir Enregistrer, Continuer sans enregistrer ou Annuler avant de revenir à l’écran initial. Le tempo et la calculette restent accessibles via le bouton BPM à côté de la grille.
+
+Le + près du sélecteur ajoute une voix vide : nom, instrument et nuancier de 12 couleurs. La voix devient active pour dessiner/coller et figure dans les destinations de « Ajouter un MIDI au projet ». Le bouton couleur permet de recolorer une voix existante non verrouillée. La palette des voix exclut les couleurs des diagnostics, de lecture et de verrouillage. Création et couleur s’annulent par Ctrl+Z et sont conservées dans le PHT.
+
+Nuancier : 12 pastilles sans noms affichés ; les noms restent dans les infobulles. Instrument… dans la barre des voix permet de changer le son sans sélection de notes, y compris pour une voix vide. Le nom de la voix reste conservé, également au clic droit.
+
+Clavier USB/MIDI : choisir LPK25 (ou le clavier voulu) dans Paramètres > Entrée USB / MIDI, puis Enregistrer. Préécoute polyphonique avec la voix active.
+Pas à pas… : outil secondaire. Ouvrir le panneau, activer le mode et choisir la durée des notes et l’avancement (indépendants de la grille). Fermer, maintenir une ou plusieurs touches MIDI puis appuyer sur → dans le piano roll pour inscrire et avancer. Relâcher sans avancer ne crée aucune note. Aucun choix Mélodie / Accords. Ctrl+Z annule un pas.
+R ou bouton ● rouge près de Lecture et Stop (Enregistrer MIDI en temps réel) : démarre la lecture et capture les attaques, durées et vélocités réellement jouées, sans quantification. Les notes s’allongent visuellement jusqu’au relâchement. R, un second clic sur le bouton actif, Stop, Pause ou Espace termine la prise ; Ctrl+Z annule la prise entière. Déconnexion : fin de prise avec conservation des notes. La pédale agit sur le son ; les durées écrites suivent les touches physiques. Aucun enregistrement ne redémarre automatiquement à la reconnexion.
+
+
+Extension de la zone de travail : déplacer, glisser-copier ou allonger des notes peut dépasser l’ancienne fin du projet. Maintenir le pointeur près d’un bord horizontal fait défiler la vue automatiquement, sans changer l’échelle temporelle. Le collage prolonge également le projet si nécessaire. Échap annule le glissement et son extension provisoire. La limite de 20 minutes reste applicable.
+
+
+Pendant l’enregistrement temps réel, l’indicateur supérieur affiche la durée écoulée de la prise (minutes:secondes), indépendamment de la position de lecture dans le projet. Après Stop, Phthongos peut proposer un BPM stable à partir des attaques de la dernière prise. Le bouton BPM conserve le tempo du projet et ajoute ≈ suivi de l’estimation en attente. L’ouvrir pour distinguer BPM du projet, BPM estimé et BPM retenu. Choisir l’estimation, sa moitié ou son double, puis appliquer explicitement, ou conserver le BPM du projet. Aucun tempo n’est imposé et aucune quantification n’est effectuée : les débuts, fins, vélocités et chevauchements restent identiques en secondes. Une prise courte, peu fournie ou irrégulière peut ne pas donner d’estimation. La proposition reste indicative et ambiguë à la moitié ou au double ; ses métadonnées sont conservées dans le PHT. Cette analyse ne modifie ni ne regroupe les événements enregistrés.
+
+L’estimation après prise utilise un portage C++ natif de MIDI BPM Detection (MIT). Plusieurs tempos candidats et leurs scores relatifs sont conservés : ces poids comparent les pics du calcul, sans mesurer une probabilité de justesse. La liste propose moitié/double et d’autres hypothèses ; confirmer un choix ne déplace ni ne quantifie les notes. Le calcul exploite les attaques, hauteurs et vélocités, sans analyser les durées ni le phrasé complet. Les prises longues ou denses utilisent des fenêtres d’analyse bornées. Aucun moteur ni dépendance de compilation Rust n’est livré.
+
+MÉTRONOME ET PRÉCOMPTE
+Le bouton Métronome du transport active le clic. Le bouton ⋯ règle le volume indépendant et le précompte Aucun / 1 mesure / 2 mesures (1 mesure initialement). Le précompte est audible même si le clic reste désactivé pendant la prise. R, Espace ou Stop annulent le décompte sans créer de notes. Les touches encore maintenues au départ sont inscrites à ce moment, avec leur vélocité initiale. Les notes entièrement jouées avant sont ignorées. Aucun précompte en saisie pas à pas.
+Dans le panneau BPM, on peut écouter la prise MIDI avec un clic temporaire au BPM candidat avant de le retenir. Le clic part de la première note disponible ; il ne certifie pas sa position métrique. Arrêter ou fermer le panneau restaure les réglages du clic. Aucune note n’est déplacée et le BPM du projet reste inchangé avant confirmation.
+
+Les volumes d’écoute sont affichés en pourcentage : 0 % est le silence et 100 % la fin de course du curseur. Les niveaux des anciens projets sont conservés. Un double-clic rétablit le niveau initial de chaque volume. Le métronome propose un curseur de volume et trois boutons de précompte. La pulsation visuelle suit le transport audio et la mesure courante ; elle est masquée lorsque le métronome est désactivé, sauf pendant le précompte ou l’écoute d’un tempo candidat. Pendant le précompte, un grand chiffre apparaît sur le piano roll, avec un décompte répété à chaque mesure.
+
+## Voix superposées et empilées
+
+En affichage MIDI, le sélecteur Superposées / Empilées change uniquement la présentation des mêmes notes MIDI. Audio + MIDI conserve les voix groupées avec une zone audio séparée ; Superposition conserve le MIDI groupé sur le signal audio ou le spectrogramme. Le retour en MIDI retrouve la présentation des voix choisie. La vue empilée propose un couloir par voix, avec les commandes de couleur, visibilité, mute, volume, instrument et verrouillage. Cliquer dans un couloir choisit la voix active pour l’édition et la préécoute ; cela ne change pas les voix audibles. Le clavier horizontal reste en bas, à hauteur compacte fixe ; seuls les couloirs de voix et la zone audio sont redimensionnables. La zone audio séparée appartient à l’affichage Audio + MIDI ; aucun espace audio n’est réservé en affichage MIDI.
+
+Cadrage par voix adapte initialement le registre à chaque voix. Échelle commune utilise la même hauteur de demi-ton et le même cadrage relatif dans tous les couloirs. La règle, la tête de lecture, le zoom et le défilement temporel restent communs. La molette parcourt les hauteurs du couloir survolé ; Maj+molette déplace le temps ; Alt+molette zoome les hauteurs ; Ctrl+molette zoome le temps et les hauteurs. L’outil Main ou le clic molette maintenu déplace le registre local et la chronologie commune. La molette sur les en-têtes ou l’unique ascenseur extérieur permet de parcourir les voix.
+
+Tirer la séparation visible entre deux couloirs répartit leur hauteur sans changer la taille des notes ; un double-clic rétablit la répartition automatique. La flèche du couloir le replie sans masquer ses notes ni couper le son. Ajuster à la voix adapte uniquement son registre et son zoom, sans modifier sa hauteur. Les hauteurs, cadrages et replis sont conservés dans le projet.
+
+Pour réaffecter des notes, activer Transférer puis les glisser vers le couloir cible, qui se surligne avant le dépôt. Alt+Maj+glisser permet aussi ce geste directement. Ce transfert conserve hauteur, attaque, durée et vélocité. Échap annule le geste. Une seule annulation rétablit le transfert. Les voix verrouillées ne peuvent être ni source ni destination. Le glisser ordinaire dans un couloir conserve les gestes d’édition habituels.
+
+À l’ouverture en vue Empilées, les couloirs se partagent la hauteur disponible, avec un minimum compact. Le registre des notes est cadré sans agrandir les couloirs. Aucun ascenseur local n’est affiché ; un seul ascenseur extérieur apparaît lorsque les couloirs ne tiennent plus dans la fenêtre. Le clavier inférieur dispose de son espace réservé et ne recouvre aucun couloir. La bande audio commune disparaît en affichage MIDI. Les hauteurs et cadrages manuels sont conservés dans le projet.
+
+Historique : les 25 derniers états d’annulation sont conservés. En déplacement ou duplication contraints, un geste resté diagonal et ambigu ne crée aucune copie et ne change pas la sélection. Le clavier horizontal reste à hauteur compacte fixe dans toutes les vues.
+
+
+Pour ajouter MuScriptor, cocher **Utiliser des moteurs tiers** dans **Paramètres**, puis déclarer ou télécharger explicitement les fichiers Small, Medium ou Large. Le réglage **Automatique / CPU / GPU** est commun à toute la famille MuScriptor, quel que soit le nombre de modèles installés. La liste **Moteur** affiche seulement les variantes présentes. Décocher les moteurs tiers revient à Basic Pitch sans effacer les fichiers ni leurs déclarations. Chaque fichier est vérifié par empreinte SHA-256 ; aucun téléchargement ne démarre automatiquement.
+
+Vous pouvez aussi ajouter vos propres fichiers **SF2** dans **Paramètres → Banques SF2 personnelles**. Dans **Instrument…** pour une voix, choisir la banque puis l’un de ses presets réels : la banque n’a pas besoin de suivre General MIDI. Ce choix est utilisé pour la lecture, la préécoute, le clavier MIDI et l’export WAV ; le nom de la voix et ses notes sont conservés. Le projet mémorise le chemin du fichier, son empreinte et le preset. Les banques personnelles sont lues sur place et ne sont pas intégrées au projet : garder le fichier disponible. Retirer une banque du catalogue n’efface pas le fichier et ne change pas les voix déjà configurées. L’export MIDI ne contient pas les sons SF2.
+
+Menu ☰ : Paramètres…, Manuel utilisateur (PDF), Crédits et licences. Basic Pitch : sept réglages en direct dans un bandeau pleine largeur repliable ; registre, attaques et récupération reconstruits depuis le cache complet de chaque voix. Poids MuScriptor optionnels sous CC BY-NC 4.0, non inclus.
+
+Basic Pitch : huit réglages ; tolérance aux interruptions de 1 à 25 trames, défaut 11. Réglable en direct depuis le cache de chaque voix, même après réouverture.
+
+BPM → Estimer depuis les notes : voix active ou Toutes les parties ; propositions et écoute au métronome, puis Appliquer explicitement. Fonctionne après transcription et import MIDI.
+
+Vérifier le MIDI avec l’audio : commandes par lot dans chaque catégorie et « Appliquer toutes les propositions… ». Récapitulatif, voix de destination pour les ajouts, exclusion des voix verrouillées et des conflits ; une seule annulation Ctrl+Z pour le lot. Relancer la vérification après application.
+
+Comparaison spectrale : propositions conservées sans plafond de 256, listes de 50 par page et lots sur toutes les pages. Un WAV seul peut être vérifié puis complété via « Nouvelle voix… », sans transcription IA. Ctrl+Z annule la voix créée et les notes ensemble.

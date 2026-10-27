@@ -1,0 +1,19 @@
+{
+  "id": "fluidsynth",
+  "version": "2.6.1",
+  "dll": "libfluidsynth-3.dll",
+  "binarySha256": "d2819955444d4b44217be9c431f2b7e38fd4062ef71341de8725eed4e31c4957",
+  "binaryArchive": "fluidsynth-official.zip",
+  "sources": [
+    "fluidsynth-v2.6.1.tar.gz"
+  ],
+  "inputs": [
+    {
+      "name": "fluidsynth-v2.6.1.tar.gz",
+      "url": "https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v2.6.1.tar.gz",
+      "sha256": "3d258a3bf97cc20c59eeebfe62c2432fae88adda74d3ad098681c76e0ebf446b"
+    }
+  ],
+  "applicationChanges": "None. The official DLL is redistributed without modification.",
+  "buildEvidence": "Original upstream workflow and dependency port recipes are supplied in the source archive. The historical vcpkg snapshot matches the codec versions and source hashes identified in the official DLL. It is reconstruction evidence, not an upstream-attested build lock or a claim of bit-for-bit reproducibility."
+}

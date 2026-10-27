@@ -1,0 +1,6 @@
+Phthongos — Trucabulles
+Application license: LICENSE (English translation); LICENSE_PHTHONGOS.md (French reference).
+Third-party components retain their own licenses. Offline FR/EN credits and complete notices are available in the application.
+components.json inventories the native package only. Optional model weights and the optional HQ bank are not bundled.
+FluidSynth and libsndfile are unmodified, replaceable DLLs. Their verified corresponding-source archives and codec notices are retained alongside them.
+The MuScriptor engine code and optional neural weights have separate licenses. No optional GGUF weights are included.

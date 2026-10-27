@@ -1,0 +1,26 @@
+﻿{
+  "upstream_tag": "SpeexDSP-1.2.1",
+  "sources": [
+    {
+      "file": "resample.c",
+      "url": "https://raw.githubusercontent.com/xiph/speexdsp/SpeexDSP-1.2.1/libspeexdsp/resample.c",
+      "sha256": "c28fabfc082d0e7634eb678e2e3a2bc091148bbb8324e3d06669c9a9faf6793a"
+    },
+    {
+      "file": "arch.h",
+      "url": "https://raw.githubusercontent.com/xiph/speexdsp/SpeexDSP-1.2.1/libspeexdsp/arch.h",
+      "sha256": "102f6a14a95f8ae0bcfc69270f3a9e3fbba08b63bba688ca524f71e3faa48c23"
+    },
+    {
+      "file": "resample_sse.h",
+      "url": "https://raw.githubusercontent.com/xiph/speexdsp/SpeexDSP-1.2.1/libspeexdsp/resample_sse.h",
+      "sha256": "350c061b7045107ee288a9964f5bd955ec570e5de4f8ce1faf593b024ae7e52a"
+    },
+    {
+      "file": "speex_resampler.h",
+      "url": "https://raw.githubusercontent.com/xiph/speexdsp/SpeexDSP-1.2.1/include/speex/speex_resampler.h",
+      "sha256": "7e439ec0dd30c32216b3ced17135f8992e5aaf53389d3f5996a7d900c453e65f"
+    }
+  ],
+  "dll_sha256": "5f6926a3ff4cb611a6d2c898aad1fb3f6306ce3523ac8e379a4221183609307b"
+}

@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "target": "windows-x64",
+  "application": {
+    "name": "Phthongos",
+    "rightsHolder": "Trucabulles",
+    "license": "LicenseRef-Phthongos",
+    "notices": [
+      "phthongos/LICENSE_PHTHONGOS_EN.md",
+      "phthongos/LICENSE_PHTHONGOS.md"
+    ]
+  },
+  "bundled": [
+    {
+      "name": "JUCE",
+      "version": "9.0.4",
+      "license": "JUCE license terms",
+      "notices": [
+        "juce/LICENSE.md",
+        "juce/THIRD-PARTY.txt",
+        "juce/JUCE.spdx.json"
+      ]
+    },
+    {
+      "name": "FluidSynth",
+      "version": "2.6.1",
+      "license": "LGPL-2.1-or-later",
+      "binary": "player-assets/fluidsynth/libfluidsynth-3.dll",
+      "sha256": "d2819955444d4b44217be9c431f2b7e38fd4062ef71341de8725eed4e31c4957",
+      "notices": [
+        "fluidsynth/LICENSE.txt",
+        "fluidsynth/provenance.json"
+      ],
+      "source": "fluidsynth/corresponding-source.zip",
+      "linkage": "replaceable shared library"
+    },
+    {
+      "name": "libsndfile and its bundled codecs",
+      "version": "1.2.2",
+      "license": "LGPL-2.1-or-later; codec licenses retained individually",
+      "binary": "player-assets/fluidsynth/sndfile.dll",
+      "sha256": "4e3bd2de8e1485110eaebef8e1239471f73d608773831c323bf528e05645655e",
+      "notices": [
+        "libsndfile/LICENSE.txt",
+        "native-codecs/NOTICE.txt",
+        "libsndfile/provenance.json"
+      ],
+      "source": "libsndfile/corresponding-source.zip",
+      "linkage": "replaceable shared library"
+    },
+    {
+      "name": "muscriptor.cpp, ggml and PFFFT",
+      "license": "MIT; PFFFT BSD-style",
+      "binary": "runtime/phthongos_muscriptor.dll",
+      "sha256": "2db6559f3d664f38bbfd9ae98642008b8cab91f8498a30ccaddceeef4059246d",
+      "notices": [
+        "muscriptor/THIRD-PARTY.txt",
+        "muscriptor/provenance.json"
+      ],
+      "source": "muscriptor/source-reference.zip"
+    },
+    {
+      "name": "SpeexDSP resampler",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "binary": "runtime/research_speex.dll",
+      "sha256": "5f6926a3ff4cb611a6d2c898aad1fb3f6306ce3523ac8e379a4221183609307b",
+      "notices": [
+        "speexdsp/NOTICE.txt",
+        "speexdsp/provenance.json"
+      ]
+    },
+    {
+      "name": "XZ / liblzma",
+      "version": "5.2 source family",
+      "license": "upstream liblzma public-domain dedication and retained file-specific terms",
+      "notices": [
+        "lzma-native/xz-5.2/COPYING",
+        "lzma-native/SOURCE.txt"
+      ]
+    },
+    {
+      "name": "MIDI BPM Detection — C++ port",
+      "license": "MIT",
+      "revision": "e14a86c1c15a3523c458c19549ce7be3f9576734",
+      "notices": [
+        "midi-bpm/LICENSE.txt",
+        "midi-bpm/SOURCE.md"
+      ]
+    },
+    {
+      "name": "Inferno, Magma and Viridis",
+      "license": "CC0-1.0",
+      "notices": [
+        "colormaps/NOTICE.txt",
+        "colormaps/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "Upright Piano KW",
+      "version": "compact SF2 2019-07-03",
+      "license": "CC0-1.0",
+      "binary": "player-assets/piano.sf2",
+      "sha256": "cf2a98eb38a32c4954b4b6e2caae4112d62dd8e892eceefdd7942b0e7d01ac2f",
+      "notices": [
+        "piano/NOTICE.md",
+        "piano/CC0.txt"
+      ]
+    },
+    {
+      "name": "Microsoft Visual C++ redistributable runtime",
+      "license": "Microsoft redistribution terms",
+      "notices": [
+        "microsoft/NOTICE.md"
+      ]
+    },
+    {
+      "name": "Basic Pitch",
+      "license": "Apache-2.0",
+      "binary": "runtime/basic-pitch/nmp.onnx",
+      "sha256": "2c3c1d144bfa61ad236e92e169c13535c880469a12a047d4e73451f2c059a0ec",
+      "notices": [
+        "basic-pitch/LICENSE",
+        "basic-pitch/NOTICE",
+        "basic-pitch/SOURCE.json"
+      ]
+    },
+    {
+      "name": "ONNX Runtime",
+      "version": "1.23.2",
+      "license": "MIT",
+      "notices": [
+        "onnxruntime/LICENSE",
+        "onnxruntime/ThirdPartyNotices.txt",
+        "onnxruntime/SOURCE.json"
+      ]
+    }
+  ],
+  "optional_models": {
+    "bundled": false,
+    "source": "https://huggingface.co/DamRsn/muscriptor-gguf",
+    "revision": "d7045f94e8b19427f4ff9542975035e66596e51c",
+    "license": "CC-BY-NC-4.0",
+    "notices": [
+      "optional-models/MuScriptor-CC-BY-NC-4.0.txt",
+      "optional-models/MuScriptor-model-card.md"
+    ]
+  },
+  "optional_soundbank": {
+    "bundled": false,
+    "name": "MuseScore General HQ 0.2.1",
+    "notices": [
+      "optional-msghq/LICENSE.txt",
+      "optional-msghq/Sample_Sources.csv"
+    ]
+  },
+  "excluded_runtime_components": [
+    "Rust",
+    "CPAL",
+    "RustySynth",
+    "Tauri",
+    "React",
+    "WebView2"
+  ],
+  "rust": [],
+  "native_core": true,
+  "basic_pitch": {
+    "source": "https://github.com/spotify/basic-pitch",
+    "revision": "fa5997af0a8210982619003269994a1be25eddf3",
+    "model": "basic_pitch/saved_models/icassp_2022/nmp.onnx",
+    "sha256": "2c3c1d144bfa61ad236e92e169c13535c880469a12a047d4e73451f2c059a0ec",
+    "license": "Apache-2.0",
+    "decoder": {
+      "source": "basic_pitch/note_creation.py at the same revision",
+      "implementation": "core/project/BasicPitch.cpp",
+      "changes": [
+        "C++ implementation with cancellation and bounds validation",
+        "stable descending index for remaining-energy selection",
+        "sample-anchored time per retained ONNX window to avoid cumulative boundary drift"
+      ],
+      "controls": "note sensitivity 70%, attack separation 50%, minimum duration 125 ms, following NeuralNote v1 defaults"
+    }
+  },
+  "onnxruntime": {
+    "source": "https://github.com/microsoft/onnxruntime/releases/tag/v1.23.2",
+    "version": "1.23.2",
+    "asset": "onnxruntime-win-x64-1.23.2.zip",
+    "sha256": "0b38df9af21834e41e73d602d90db5cb06dbd1ca618948b8f1d66d607ac9f3cd",
+    "license": "MIT",
+    "runtime_files": {
+      "onnxruntime.dll": "dec964ab1ee36cc9b0ae247d13b376627992fc57dec0454354017ab8fd84f1ea",
+      "onnxruntime_providers_shared.dll": "a2b3a50956aa75a9879c8472bc7df4f7a8072bcd2db19a1b7d988e7688f293ef"
+    }
+  },
+  "xz": {
+    "version": "5.2",
+    "source": "lzma-native/xz-5.2",
+    "notices": [
+      "lzma-native/xz-5.2/COPYING"
+    ]
+  },
+  "midi_tempo": {
+    "name": "MIDI BPM Detection — C++ port",
+    "revision": "e14a86c1c15a3523c458c19549ce7be3f9576734",
+    "license": "MIT",
+    "notices": [
+      "midi-bpm/LICENSE.txt",
+      "midi-bpm/SOURCE.md"
+    ],
+    "source": "https://github.com/valsteen/midi_bpm_detection"
+  },
+  "javascript": [],
+  "native_ui": {
+    "name": "JUCE",
+    "version": "9.0.4",
+    "notices": [
+      "juce/LICENSE.md"
+    ],
+    "source": "vendor/JUCE"
+  },
+  "colormaps": {
+    "names": [
+      "Inferno",
+      "Magma",
+      "Viridis"
+    ],
+    "license": "CC0-1.0",
+    "notices": [
+      "colormaps/NOTICE.txt",
+      "colormaps/LICENSE.txt"
+    ],
+    "source": "https://github.com/BIDS/colormap"
+  },
+  "note": "Fork JUCE : aucune interface Tauri, React ou WebView2 embarquee."
+}

@@ -1,0 +1,4 @@
+JUCE 9.0.4. Vendored source: vendor/JUCE in this project.
+Original license and upstream SPDX inventory are retained. Phthongos
+uses JUCE under its JUCE license terms, not by relicensing its modules
+under the Phthongos application license.

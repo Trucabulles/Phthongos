@@ -1,0 +1,1 @@
+XZ 5.2 sources already used by the frozen lzma-sys 0.1.20 dependency. C sources compiled directly with CMake; no Rust wrapper linked. Original licences retained.

@@ -1,0 +1,24 @@
+{
+  "binary": "runtime/phthongos_muscriptor.dll",
+  "sha256": "2db6559f3d664f38bbfd9ae98642008b8cab91f8498a30ccaddceeef4059246d",
+  "binaryOrigin": "Byte-identical to the retained native Vulkan build output.",
+  "sources": [
+    {
+      "component": "muscriptor",
+      "revision": "a4f6fe5dbc1050a9517f5112ff732bf553479ecc",
+      "archive": "muscriptor-a4f6fe5dbc10.zip",
+      "sha256": "00d65d9fca0c9c0c67703106ee1ac03d0031d406042e3e60fdfb34acd34f4c7e",
+      "source": "https://github.com/DamRsn/muscriptor.cpp"
+    },
+    {
+      "component": "ggml",
+      "revision": "e91ded11bdcd78c42f9c8d3978ff6686eb4c1226",
+      "archive": "ggml-e91ded11bdcd.zip",
+      "sha256": "b796febbc815643efe76679267c2662dd959382bb0ef7276c0cd11a800a334bf",
+      "source": "https://github.com/ggml-org/ggml"
+    }
+  ],
+  "localChanges": "The Phthongos-owned C ABI bridge is separate; upstream muscriptor.cpp and ggml worktrees are clean.",
+  "buildEvidence": "Upstream commits, local bridge and a sanitized configuration are supplied. No bit-for-bit rebuild is claimed.",
+  "sourceArchiveSha256": "fd83ce32f417c65642441a1fec3a568a71753a4183fb8245b209a462342ced80"
+}

@@ -1,0 +1,210 @@
+﻿[
+  {
+    "file": "mpg123-1.31.3.tar.bz2",
+    "url": "https://www.mpg123.de/download/mpg123-1.31.3.tar.bz2",
+    "sha256": "1ca77d3a69a5ff845b7a0536f783fee554e1041139a6b978f6afe14f5814ad1a",
+    "notices": [
+      "mpg123-1.31.3-AUTHORS",
+      "mpg123-1.31.3-COPYING"
+    ]
+  },
+  {
+    "file": "lame-3.100.tar.gz",
+    "url": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz",
+    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e",
+    "notices": [
+      "lame-3.100-COPYING",
+      "lame-3.100-LICENSE"
+    ]
+  },
+  {
+    "upstream_archive": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2",
+    "archive_sha256": "8e8e0406fb9e1d177bb4ba8cfed3ca3935d37144eac8f0219a03e8c1ed5cc18e",
+    "notices": [
+      "flac-1.4.2-AUTHORS",
+      "flac-1.4.2-COPYING.FDL",
+      "flac-1.4.2-COPYING.GPL",
+      "flac-1.4.2-COPYING.LGPL",
+      "flac-1.4.2-COPYING.Xiph"
+    ]
+  },
+  {
+    "upstream_archive": "https://codeload.github.com/xiph/ogg/tar.gz/refs/tags/v1.3.5",
+    "archive_sha256": "f6f1b04cfa4e98b70ffe775d5e302d9c6b98541f05159af6de2d6617817ed7d6",
+    "notices": [
+      "libogg-1.3.5-AUTHORS",
+      "libogg-1.3.5-COPYING"
+    ]
+  },
+  {
+    "upstream_archive": "https://codeload.github.com/xiph/vorbis/tar.gz/refs/tags/v1.3.7",
+    "archive_sha256": "270c76933d0934e42c5ee0a54a36280e2d87af1de3cc3e584806357e237afd13",
+    "notices": [
+      "libvorbis-1.3.7-AUTHORS",
+      "libvorbis-1.3.7-COPYING"
+    ]
+  },
+  {
+    "upstream_archive": "https://codeload.github.com/xiph/opus/tar.gz/refs/tags/v1.4",
+    "archive_sha256": "659e6b223e42a51b0a898632b9a5f406ccd5c2e00aa526ddd1264789774b94e5",
+    "notices": [
+      "opus-1.4-AUTHORS",
+      "opus-1.4-COPYING",
+      "opus-1.4-LICENSE_PLEASE_READ.txt"
+    ]
+  },
+  {
+    "file": "vcpkg-mpg123-portfile.cmake",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mpg123/portfile.cmake",
+    "sha256": "5637c1bb401781f712d709ba5fbf6234a3f3b04554f597ab8771b2063bf2e53b"
+  },
+  {
+    "file": "vcpkg-mpg123-vcpkg.json",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mpg123/vcpkg.json",
+    "sha256": "7470118d9b5fed9cfef325f83626bc75b6af9a7e1ff4f1878daf5d9f408c983e"
+  },
+  {
+    "file": "vcpkg-mpg123-fix-modulejack.patch",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mpg123/fix-modulejack.patch",
+    "sha256": "46edf5b094919852541d5e7e54ed5ee1cfb9daffe43437cf86c80041b41d7f39"
+  },
+  {
+    "file": "vcpkg-mpg123-fix-m1-build.patch",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mpg123/fix-m1-build.patch",
+    "sha256": "95bc594037f888b34ac13017b957e5014a9653f62259fa4351a41ad35e00c0ef"
+  },
+  {
+    "file": "vcpkg-mp3lame-portfile.cmake",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/portfile.cmake",
+    "sha256": "4094685391d0a2d158dfa8e322547f0e6b5624c98c6722d604af9f83af46bf9a"
+  },
+  {
+    "file": "vcpkg-mp3lame-vcpkg.json",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/vcpkg.json",
+    "sha256": "48614661ade7f6000cbb4cbd32278833c09890dfadfa58e732b240ba9e96579d"
+  },
+  {
+    "file": "vcpkg-libogg-portfile.cmake",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/libogg/portfile.cmake",
+    "sha256": "6da25d70a617bd4c7fd18cb2a8acd8d40c1fcc671846195a02ef2dc74a6b463e"
+  },
+  {
+    "file": "vcpkg-libogg-vcpkg.json",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/libogg/vcpkg.json",
+    "sha256": "4d651ca89f0f8d155e659450304e65c168febe7cee7739b30eccda7ac70ebebb"
+  },
+  {
+    "file": "mpg123-1.31.3-AUTHORS",
+    "sha256": "bfa5dab0ed3b3ea7a9c76961fcf76df5a5d8e5107cb05d31cf6c5880919b89e5",
+    "extracted_from": "https://www.mpg123.de/download/mpg123-1.31.3.tar.bz2"
+  },
+  {
+    "file": "mpg123-1.31.3-COPYING",
+    "sha256": "c22482728a634a8dfdb4ff72a96d4c1ed64cd8f3e79335c401751ac591609366",
+    "extracted_from": "https://www.mpg123.de/download/mpg123-1.31.3.tar.bz2"
+  },
+  {
+    "file": "lame-3.100-COPYING",
+    "sha256": "bfe4a52dc4645385f356a8e83cc54216a293e3b6f1cb4f79f5fc0277abf937fd",
+    "extracted_from": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz"
+  },
+  {
+    "file": "lame-3.100-LICENSE",
+    "sha256": "7a40cbd8818c57e5285e83c772a459a996d1662c824a879836b97b473c07cae4",
+    "extracted_from": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz"
+  },
+  {
+    "file": "flac-1.4.2-AUTHORS",
+    "sha256": "195407de2759edfd405b0f855711b63f3c8911bf3034c55ec3175bb3a2c6e589",
+    "extracted_from": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2"
+  },
+  {
+    "file": "flac-1.4.2-COPYING.FDL",
+    "sha256": "f45cc81b400a048b56c9edbd4c3317f7a8958463dfd55aa96f268ecfd6baa12c",
+    "extracted_from": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2"
+  },
+  {
+    "file": "flac-1.4.2-COPYING.GPL",
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "extracted_from": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2"
+  },
+  {
+    "file": "flac-1.4.2-COPYING.LGPL",
+    "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+    "extracted_from": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2"
+  },
+  {
+    "file": "flac-1.4.2-COPYING.Xiph",
+    "sha256": "6e58d3036f05e2a0d58af854c12a505ddbe75011d71a598a2170987f3b15408d",
+    "extracted_from": "https://codeload.github.com/xiph/flac/tar.gz/refs/tags/1.4.2"
+  },
+  {
+    "file": "libogg-1.3.5-AUTHORS",
+    "sha256": "6fcb33d0cdd60b5054e7df820916388b590427514288c2bab01c626bb8ae9506",
+    "extracted_from": "https://codeload.github.com/xiph/ogg/tar.gz/refs/tags/v1.3.5"
+  },
+  {
+    "file": "libogg-1.3.5-COPYING",
+    "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
+    "extracted_from": "https://codeload.github.com/xiph/ogg/tar.gz/refs/tags/v1.3.5"
+  },
+  {
+    "file": "libvorbis-1.3.7-AUTHORS",
+    "sha256": "f5cab9f16035f770f50299f85cf2938c06dc3a9a30425961067788102ec896d3",
+    "extracted_from": "https://codeload.github.com/xiph/vorbis/tar.gz/refs/tags/v1.3.7"
+  },
+  {
+    "file": "libvorbis-1.3.7-COPYING",
+    "sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
+    "extracted_from": "https://codeload.github.com/xiph/vorbis/tar.gz/refs/tags/v1.3.7"
+  },
+  {
+    "file": "opus-1.4-AUTHORS",
+    "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b",
+    "extracted_from": "https://codeload.github.com/xiph/opus/tar.gz/refs/tags/v1.4"
+  },
+  {
+    "file": "opus-1.4-COPYING",
+    "sha256": "8338ce8d922bb4416ce3dd1e5680173332435e3f0755007ac7801ccd674fe682",
+    "extracted_from": "https://codeload.github.com/xiph/opus/tar.gz/refs/tags/v1.4"
+  },
+  {
+    "file": "opus-1.4-LICENSE_PLEASE_READ.txt",
+    "sha256": "7efb4989e0cd1b256229bdf2f09300c5d14e35db0e7476bfb87fac243498273d",
+    "extracted_from": "https://codeload.github.com/xiph/opus/tar.gz/refs/tags/v1.4"
+  },
+  {
+    "file": "vcpkg-mp3lame-00001-msvc-upgrade-solution-up-to-vc11.patch",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/00001-msvc-upgrade-solution-up-to-vc11.patch",
+    "sha256": "a75204e3f5c8d94deba46101794b1ed08e373a8de7935e13e8a9cad5803f7291"
+  },
+  {
+    "file": "vcpkg-mp3lame-remove_lame_init_old_from_symbol_list.patch",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/remove_lame_init_old_from_symbol_list.patch",
+    "sha256": "ae9d1ca1781a329fe1fa932752eba9617b5a1ee98c1975759e18b18c3b482db5"
+  },
+  {
+    "file": "vcpkg-mp3lame-add-macos-universal-config.patch",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/add-macos-universal-config.patch",
+    "sha256": "e50e5bd9a3a41b6374f45b8fdbe7bce062f967cafd1e5c7090735953fbc2f8fa"
+  },
+  {
+    "file": "vcpkg-mp3lame-Config.cmake.in",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/Config.cmake.in",
+    "sha256": "264bacd819e2a5d1b1dbd2673d77c623e956279074091faef6275495b100d42c"
+  },
+  {
+    "file": "vcpkg-mp3lame-usage",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/ports/mp3lame/usage",
+    "sha256": "54d86a353e4cd5c1f76c5ea348bc6b28647fe176b63bd0bdb41d102c1a41a589"
+  },
+  {
+    "file": "NOTICE.txt",
+    "sha256": "2880988887f351ce97fab23e054fedf5641edf04690accaa4dd7683f422eafa0"
+  },
+  {
+    "file": "vcpkg-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/vcpkg/2023.08.09/LICENSE.txt",
+    "sha256": "1ee376fc340e0aa6ad6a3581c94126e741468705096ac92263048a21daa86460"
+  }
+]

@@ -1,0 +1,35 @@
+Phthongos — version 0.1.0
+
+PHTHONGOS LICENSE
+
+Copyright © 2026 Trucabulles. License for inspection, modification and non-commercial redistribution. Professional use is permitted; selling the software or derivatives requires permission. Third-party components retain their own licenses. The original French text and English translation are available in this window.
+
+BUNDLED COMPONENTS
+
+Basic Pitch — Spotify AB, copyright 2022. ONNX model and note decoding: Apache-2.0. The decoder was adapted to C++ for Phthongos. Licence, NOTICE and provenance are retained in basic-pitch/.
+ONNX Runtime — Microsoft and contributors: MIT, with third-party notices in onnxruntime/.
+JUCE — native interface and audio: JUCE 9 terms and the AGPLv3 alternative are described in juce/LICENSE.md.
+FluidSynth and libsndfile — synthesis and audio playback: LGPL-2.1-or-later. Replaceable DLLs; licences, provenance and corresponding sources in their folders (SHA-256-verified archives).
+muscriptor.cpp — Damien Ronssin; a port of MuScriptor code by Kyutai and Mirelo: MIT. ggml: MIT; PFFFT: BSD-style licence. Vulkan and SPIR-V headers retain their upstream notices. Notices in muscriptor/THIRD-PARTY.txt. These code licences do not cover model weights.
+SpeexDSP, liblzma/XZ, audio codecs and Microsoft runtime: their respective licences and notices are available in this list and their folders.
+MIDI tempo detection — C++ port of MIDI BPM Detection, MIT; Inferno, Magma and Viridis colour maps, CC0. Notices in midi-bpm/ and colormaps/.
+
+BUNDLED SOUNDFONT
+
+Upright Piano KW — Gonzalo and Roberto / FreePats, compact SF2 version dated 2019-07-03: CC0 1.0. Credits and full licence in piano/.
+Source: https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
+
+OPTIONAL MODELS — NOT INCLUDED IN THE INSTALLER
+
+MuScriptor Small, Medium and Large — Kyutai and Mirelo: CC BY-NC 4.0, non-commercial use under that licence. GGUF files converted and hosted by Damien Ronssin, downloaded separately on explicit request or declared manually. Separate downloading does not remove the weights’ licence conditions.
+Source: https://huggingface.co/DamRsn/muscriptor-gguf
+Pinned revision: d7045f94e8b19427f4ff9542975035e66596e51c, files v1/muscriptor-{small,medium,large}-f16.gguf. Fingerprints verified by Phthongos.
+Original code: https://github.com/muscriptor/muscriptor
+Full licence and model card: optional-models/.
+
+OPTIONAL BANKS AND PERSONAL FILES
+
+MuseScore General HQ 0.2.1: optional, not bundled. MIT with public-domain or CC0 samples; detailed attribution is retained in optional-msghq/LICENSE.txt and Sample_Sources.csv, including the adaptation by S. Christian Collins.
+User-declared SF2 banks and models remain external files subject to their own licences. Declaring them does not mean they are distributed by Phthongos.
+
+These credits identify component provenance without implying partnership or endorsement. The dropdown provides offline access to the licence texts and notices retained with this distribution.

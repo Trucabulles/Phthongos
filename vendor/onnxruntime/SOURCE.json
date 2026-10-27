@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/microsoft/onnxruntime/releases/tag/v1.23.2",
+  "version": "1.23.2",
+  "asset": "onnxruntime-win-x64-1.23.2.zip",
+  "sha256": "0b38df9af21834e41e73d602d90db5cb06dbd1ca618948b8f1d66d607ac9f3cd",
+  "license": "MIT",
+  "runtime_files": {
+    "onnxruntime.dll": "dec964ab1ee36cc9b0ae247d13b376627992fc57dec0454354017ab8fd84f1ea",
+    "onnxruntime_providers_shared.dll": "a2b3a50956aa75a9879c8472bc7df4f7a8072bcd2db19a1b7d988e7688f293ef"
+  }
+}

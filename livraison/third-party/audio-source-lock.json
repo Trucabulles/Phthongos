@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "name": "opus-1.4.tar.gz",
+      "url": "https://github.com/xiph/opus/archive/refs/tags/v1.4.tar.gz",
+      "sha256": "659e6b223e42a51b0a898632b9a5f406ccd5c2e00aa526ddd1264789774b94e5"
+    },
+    {
+      "name": "lame-3.100.tar.gz",
+      "url": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz",
+      "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+    },
+    {
+      "name": "mpg123-1.31.3.tar.bz2",
+      "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2",
+      "sha256": "1ca77d3a69a5ff845b7a0536f783fee554e1041139a6b978f6afe14f5814ad1a"
+    },
+    {
+      "name": "vcpkg-0fa8459.tar.gz",
+      "url": "https://github.com/microsoft/vcpkg/archive/0fa8459cf3a7caca7adc58f992bc32ff13630684.tar.gz",
+      "sha256": "f95434a4efb27c6925ae745c3856132cbf52b7b89b5d27b9806714160bda0057"
+    },
+    {
+      "name": "flac-1.4.2.tar.gz",
+      "url": "https://github.com/xiph/flac/archive/refs/tags/1.4.2.tar.gz",
+      "sha256": "8e8e0406fb9e1d177bb4ba8cfed3ca3935d37144eac8f0219a03e8c1ed5cc18e"
+    },
+    {
+      "name": "libogg-1.3.5.tar.gz",
+      "url": "https://github.com/xiph/ogg/archive/refs/tags/v1.3.5.tar.gz",
+      "sha256": "f6f1b04cfa4e98b70ffe775d5e302d9c6b98541f05159af6de2d6617817ed7d6"
+    },
+    {
+      "name": "libvorbis-1.3.7.tar.gz",
+      "url": "https://github.com/xiph/vorbis/archive/refs/tags/v1.3.7.tar.gz",
+      "sha256": "270c76933d0934e42c5ee0a54a36280e2d87af1de3cc3e584806357e237afd13"
+    },
+    {
+      "name": "fluidsynth-official.zip",
+      "url": "https://github.com/FluidSynth/fluidsynth/releases/download/v2.6.1/fluidsynth-v2.6.1-win10-x64-cpp11.zip",
+      "sha256": "fab7a2e4b85675b66970f97a39bbc239729c5e0f237198b5922a6a73cbc8677c"
+    },
+    {
+      "name": "libsndfile-official.zip",
+      "url": "https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2-win64.zip",
+      "sha256": "2173935c0c1ed13cf627951d34483f9d405ead2eb473190461c42ba220643a3f"
+    },
+    {
+      "name": "fluidsynth-v2.6.1.tar.gz",
+      "url": "https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v2.6.1.tar.gz",
+      "sha256": "3d258a3bf97cc20c59eeebfe62c2432fae88adda74d3ad098681c76e0ebf446b"
+    },
+    {
+      "name": "libsndfile-1.2.2.tar.xz",
+      "url": "https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz",
+      "sha256": "3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e"
+    },
+    {
+      "name": "libsndfile-workflow.yml",
+      "url": "https://raw.githubusercontent.com/libsndfile/libsndfile/1.2.2/.github/workflows/action.yml",
+      "sha256": "f907ded6602b792685e3341336749b9ab6fc5847177d21a64ad2b9a83dc948f4"
+    }
+  ],
+  "components": [
+    {
+      "id": "fluidsynth",
+      "version": "2.6.1",
+      "dll": "libfluidsynth-3.dll",
+      "binarySha256": "d2819955444d4b44217be9c431f2b7e38fd4062ef71341de8725eed4e31c4957",
+      "binaryArchive": "fluidsynth-official.zip",
+      "sources": [
+        "fluidsynth-v2.6.1.tar.gz"
+      ]
+    },
+    {
+      "id": "libsndfile",
+      "version": "1.2.2",
+      "dll": "sndfile.dll",
+      "binarySha256": "4e3bd2de8e1485110eaebef8e1239471f73d608773831c323bf528e05645655e",
+      "binaryArchive": "libsndfile-official.zip",
+      "sources": [
+        "libsndfile-1.2.2.tar.xz",
+        "libsndfile-workflow.yml",
+        "opus-1.4.tar.gz",
+        "lame-3.100.tar.gz",
+        "mpg123-1.31.3.tar.bz2",
+        "vcpkg-0fa8459.tar.gz",
+        "flac-1.4.2.tar.gz",
+        "libogg-1.3.5.tar.gz",
+        "libvorbis-1.3.7.tar.gz"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+CODECS INTEGRES AU BINAIRE OFFICIEL LIBSNDFILE 1.2.2
+Le fichier sndfile.dll est identique a celui de libsndfile-1.2.2-win64.zip :
+https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2-win64.zip
+SHA256 de cette archive : 2173935c0c1ed13cf627951d34483f9d405ead2eb473190461c42ba220643a3f
+Aucune modification de ces codecs n'est effectuee par Phthongos.
+
+Versions identifiees dans le binaire : FLAC 1.4.2, Vorbis 1.3.7, Opus 1.4,
+LAME 3.100. mpg123 1.31.3 et son jeu de correctifs vcpkg sont identifies
+par les deux empreintes du chemin de compilation : 5dd550e06f-d919e8ea46.
+Les sources de mpg123 et LAME sont fournies avec les recettes/correctifs vcpkg.
+Les archives sources verifiees et recettes sont dans libsndfile/corresponding-source.zip et fluidsynth/corresponding-source.zip.
+Les bibliotheques FLAC, Ogg, Vorbis et Opus utilisent les notices BSD/Xiph.
+Les licences GPL/FDL de FLAC concernent les outils/documentation amont,
+pas la bibliotheque libFLAC sous COPYING.Xiph utilisee ici.
+La revision exacte d'Ogg n'est pas inscrite dans la DLL ; la notice fournie
+vient de 1.3.5, version vcpkg a la date du binaire (recette conservee).
+La DLL libsndfile et la DLL FluidSynth restent remplacables par des versions
+compatibles, y compris pour utiliser des versions modifiees de ces sources.

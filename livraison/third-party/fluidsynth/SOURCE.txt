@@ -1,0 +1,13 @@
+FluidSynth 2.6.1 — LGPL-2.1-or-later
+
+The unmodified DLL is byte-identical to the official Windows x64 cpp11 release.
+Complete upstream sources are included in corresponding-source.zip.
+Original build recipe: .github/workflows/windows.yml inside fluidsynth-v2.6.1.tar.gz.
+The upstream recipe references libsndfile 1.2.2; its source and dependency material
+are distributed separately under resources/notices/libsndfile.
+
+Source: https://github.com/FluidSynth/fluidsynth/tree/v2.6.1
+Official binaries: https://github.com/FluidSynth/fluidsynth/releases/tag/v2.6.1
+SHA-256 values and archive origins: provenance.json.
+KITHARA NEA applies no changes to this DLL. An interface-compatible DLL can replace it.
+Third-party components retain their own licenses and redistribution rights.

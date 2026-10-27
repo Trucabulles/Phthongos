@@ -1,0 +1,24 @@
+libsndfile 1.2.2 — LGPL-2.1-or-later
+
+The unmodified sndfile.dll is byte-identical to both the libsndfile 1.2.2 Windows
+x64 release and the copy included in the official FluidSynth 2.6.1 release.
+Complete libsndfile sources and build/dependency material are included in
+corresponding-source.zip. No changes were applied by KITHARA NEA.
+
+Source: https://github.com/libsndfile/libsndfile/releases/tag/1.2.2
+The DLL reports libsndfile-1.2.2 and includes the following codec libraries:
+- FLAC 1.4.2: library under BSD-3-Clause (the separate tools have other terms).
+- libogg 1.3.5: BSD-3-Clause.
+- libvorbis 1.3.7: BSD-3-Clause.
+- Opus 1.4: BSD-style terms; see included COPYING and patent notices.
+- LAME 3.100: LGPL; see its included COPYING.
+- mpg123 1.31.3: LGPL-2.1; see its included COPYING.
+
+Upstream source archives, original libsndfile CI workflow and vcpkg port recipes,
+including patches, are supplied together. The historical vcpkg snapshot matches
+identified codec versions/source hashes; the original binary publisher did not
+provide an attested complete build lock. No bit-identical rebuild is claimed.
+The provenance file records the origin and SHA-256 of every included archive.
+
+An interface-compatible sndfile.dll can replace this DLL independently of the app.
+All included components retain their own licenses and redistribution rights.

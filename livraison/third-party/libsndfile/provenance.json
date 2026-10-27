@@ -1,0 +1,67 @@
+{
+  "id": "libsndfile",
+  "version": "1.2.2",
+  "dll": "sndfile.dll",
+  "binarySha256": "4e3bd2de8e1485110eaebef8e1239471f73d608773831c323bf528e05645655e",
+  "binaryArchive": "libsndfile-official.zip",
+  "sources": [
+    "libsndfile-1.2.2.tar.xz",
+    "libsndfile-workflow.yml",
+    "opus-1.4.tar.gz",
+    "lame-3.100.tar.gz",
+    "mpg123-1.31.3.tar.bz2",
+    "vcpkg-0fa8459.tar.gz",
+    "flac-1.4.2.tar.gz",
+    "libogg-1.3.5.tar.gz",
+    "libvorbis-1.3.7.tar.gz"
+  ],
+  "inputs": [
+    {
+      "name": "opus-1.4.tar.gz",
+      "url": "https://github.com/xiph/opus/archive/refs/tags/v1.4.tar.gz",
+      "sha256": "659e6b223e42a51b0a898632b9a5f406ccd5c2e00aa526ddd1264789774b94e5"
+    },
+    {
+      "name": "lame-3.100.tar.gz",
+      "url": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz",
+      "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+    },
+    {
+      "name": "mpg123-1.31.3.tar.bz2",
+      "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2",
+      "sha256": "1ca77d3a69a5ff845b7a0536f783fee554e1041139a6b978f6afe14f5814ad1a"
+    },
+    {
+      "name": "vcpkg-0fa8459.tar.gz",
+      "url": "https://github.com/microsoft/vcpkg/archive/0fa8459cf3a7caca7adc58f992bc32ff13630684.tar.gz",
+      "sha256": "f95434a4efb27c6925ae745c3856132cbf52b7b89b5d27b9806714160bda0057"
+    },
+    {
+      "name": "flac-1.4.2.tar.gz",
+      "url": "https://github.com/xiph/flac/archive/refs/tags/1.4.2.tar.gz",
+      "sha256": "8e8e0406fb9e1d177bb4ba8cfed3ca3935d37144eac8f0219a03e8c1ed5cc18e"
+    },
+    {
+      "name": "libogg-1.3.5.tar.gz",
+      "url": "https://github.com/xiph/ogg/archive/refs/tags/v1.3.5.tar.gz",
+      "sha256": "f6f1b04cfa4e98b70ffe775d5e302d9c6b98541f05159af6de2d6617817ed7d6"
+    },
+    {
+      "name": "libvorbis-1.3.7.tar.gz",
+      "url": "https://github.com/xiph/vorbis/archive/refs/tags/v1.3.7.tar.gz",
+      "sha256": "270c76933d0934e42c5ee0a54a36280e2d87af1de3cc3e584806357e237afd13"
+    },
+    {
+      "name": "libsndfile-1.2.2.tar.xz",
+      "url": "https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz",
+      "sha256": "3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e"
+    },
+    {
+      "name": "libsndfile-workflow.yml",
+      "url": "https://raw.githubusercontent.com/libsndfile/libsndfile/1.2.2/.github/workflows/action.yml",
+      "sha256": "f907ded6602b792685e3341336749b9ab6fc5847177d21a64ad2b9a83dc948f4"
+    }
+  ],
+  "applicationChanges": "None. The official DLL is redistributed without modification.",
+  "buildEvidence": "Original upstream workflow and dependency port recipes are supplied in the source archive. The historical vcpkg snapshot matches the codec versions and source hashes identified in the official DLL. It is reconstruction evidence, not an upstream-attested build lock or a claim of bit-for-bit reproducibility."
+}
