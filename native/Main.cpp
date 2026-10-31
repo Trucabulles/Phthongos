@@ -49,7 +49,7 @@ class Application : public juce::JUCEApplication {
 
 public:
   const juce::String getApplicationName() override { return "Phthongos"; }
-  const juce::String getApplicationVersion() override { return "0.1.0"; }
+  const juce::String getApplicationVersion() override { return "0.1.1"; }
   bool moreThanOneInstanceAllowed() override { return true; }
   void initialise(const juce::String &rawCommand) override {
     phthongos::diagnostics::start(juce::File::getSpecialLocation(juce::File::currentExecutableFile).getSiblingFile("data/diagnostics"));
@@ -89,6 +89,12 @@ public:
       auto cache=juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("phthongos-save-close-cache-"+juce::Uuid().toString()).getChildFile("audio");
       flowTest=std::make_unique<App>(cache);
       flowTest->runSaveCloseTests(juce::File(command.fromFirstOccurrenceOf(" ",false,false).unquoted()),[this](bool ok){setApplicationReturnValue(ok?0:1);quit();});return;
+    }
+    if(command.startsWith("--project-compatibility-test ")){
+      auto cache=juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("phthongos-compat-cache-"+juce::Uuid().toString()).getChildFile("audio");
+      App test(cache);
+      setApplicationReturnValue(test.runProjectCompatibilityTest(juce::File(command.fromFirstOccurrenceOf(" ",false,false).unquoted()))?0:1);
+      quit();return;
     }
     if(command.startsWith("--project-test ")){
       auto cache=juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("phthongos-project-test-"+juce::Uuid().toString()).getChildFile("audio");

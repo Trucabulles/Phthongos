@@ -42,6 +42,7 @@ public:
   static bool runDiagnosticsTests();
   void runGuidedTests(const juce::File&,std::function<void(bool)>);
   bool runProjectTransitionTest(const juce::File&);
+  bool runProjectCompatibilityTest(const juce::File&);
   void runSaveCloseTests(const juce::File&,std::function<void(bool)>);
   void openAudioPath(const String &);
   void runInstanceTests(const juce::File&,const juce::File&,const juce::File&,std::function<void(bool)>);

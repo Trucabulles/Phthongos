@@ -102,6 +102,16 @@ produces a licensing audit under `build/legal-audio`, outside the package.
 
 ## Component sources
 
+### Saved-project compatibility regression
+
+On a staged runtime, `Phthongos.exe --project-compatibility-test C:/projects/saved.pht`
+checks reopening a legacy analysis with a different runtime manifest, Save As,
+embedded audio/maps, edit history, provenance and reopening the saved copy.
+It also verifies rejection of corrupt checksums, unsupported versions and
+inconsistent map dimensions. The input project is never saved over; temporary
+copies and JSON reports are written under `test-results/` beside the test binary.
+Use a project saved with a different runtime manifest for this regression.
+
 `tools/prepare_audio_sources.py` can regenerate FluidSynth/libsndfile source
 archives from the pinned official inputs in
 `livraison/third-party/audio-source-lock.json`. It needs network access on the

@@ -70,7 +70,7 @@ AudioInfo pcmInfo(const std::vector<std::uint8_t>& b){
     if(!fmt||!data)fail("WAV invalide.");info.frames=bytes/2/info.channels;info.duration=static_cast<double>(info.frames)/info.sampleRate;
     if(!info.frames||info.duration<.1)fail("Le WAV doit durer au moins 0,1 seconde.");if(info.duration>419.95)fail("Ce prototype est limité à un bloc de moins de 420 secondes.");return info;
 }
-Prepared prepare(Container container,const std::vector<std::string>& names,const std::string& runtimeHash){
+Prepared prepare(Container container,const std::vector<std::string>& names,const std::string& /*runtimeHash*/){
     auto tempo=container.metadata["tempo_bpm"];if(!tempo.isVoid()&&!tempo.isUndefined()){auto bpm=real(tempo);if(bpm!=0)midi::validateTempo(bpm);}
     validateEnvelope(container);
     Prepared p;p.container=std::move(container);auto m=p.container.metadata;
@@ -82,7 +82,9 @@ Prepared prepare(Container container,const std::vector<std::string>& names,const
     auto bp=m["basic_pitch"];auto frames=uint(m["frames"],nil(bp)?18000:40000);auto& cs=array(m["candidates"],1000000);double sensitivity=real(m["sensitivity"]);if(sensitivity<0||sensitivity>100)fail("La sensibilité doit être comprise entre 0 et 100 %.");float threshold=static_cast<float>(1.-sensitivity/100.);
     bool midiOnly=m.hasProperty("midi_only")?boolean(m["midi_only"]):false;
     double storedDuration=m.hasProperty("timeline_duration")?real(m["timeline_duration"]):0;auto midi=m["imported_midi"],mu=m["muscriptor"],profileName=m["profile"];
-    if(nil(midi)&&nil(mu)&&nil(bp)&&str(m["runtime_sha256"])!=runtimeHash)fail("Baseline du projet différente du moteur installé.");
+    // Cached analysis is part of the project, not a request to run the installed
+    // engine again. Its runtime hash records provenance, not format compatibility.
+    // Envelope, audio, maps, candidates and editor state remain validated below.
     if(midiOnly){if(nil(midi)||!p.container.data[0].empty())fail("Projet MIDI seul incohérent.");p.audio.duration=storedDuration;if(p.audio.duration<=0||p.audio.duration>1200)fail("Durée MIDI invalide (maximum 20 minutes).");}
     else p.audio=pcmInfo(p.container.data[0]);
     p.source.gmNames=names;

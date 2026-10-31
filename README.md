@@ -14,7 +14,7 @@ Processing runs locally.
 
 ## Windows packages
 
-Download the portable ZIP or installer from the [Windows release](https://github.com/Trucabulles/Phthongos/releases/tag/v0.1.0).
+Download the portable ZIP or installer from the [latest Windows release](https://github.com/Trucabulles/Phthongos/releases/latest).
 
 The portable ZIP and Windows installer contain the same application and runtime
 components. Extract the portable archive to a writable folder before running
@@ -30,6 +30,11 @@ be opened from the application menu. Source manuals are
 [English](MANUAL-PHTHONGOS-EN.md) and [French](MANUEL-PHTHONGOS.md).
 
 ## Development
+
+Saved projects contain their audio, cached analysis and edits. A compatible
+project can be reopened after an application or engine update without repeating
+transcription. The recorded runtime fingerprint is provenance information;
+project format, integrity and data validation determine compatibility.
 
 See [BUILDING.md](BUILDING.md) for prerequisites, verified runtime preparation,
 compilation, tests and package creation. The installed application does not
