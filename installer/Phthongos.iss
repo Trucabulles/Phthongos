@@ -7,7 +7,7 @@
 [Setup]
 AppId={{6ED12C37-43DD-4E8F-99AF-74AC207A9C2F}
 AppName=Phthongos
-AppVersion=0.1.1
+AppVersion=0.1.2
 AppPublisher=Trucabulles
 DefaultDirName={localappdata}\Programs\Phthongos
 DefaultGroupName=Phthongos

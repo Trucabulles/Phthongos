@@ -49,7 +49,7 @@ class Application : public juce::JUCEApplication {
 
 public:
   const juce::String getApplicationName() override { return "Phthongos"; }
-  const juce::String getApplicationVersion() override { return "0.1.1"; }
+  const juce::String getApplicationVersion() override { return "0.1.2"; }
   bool moreThanOneInstanceAllowed() override { return true; }
   void initialise(const juce::String &rawCommand) override {
     phthongos::diagnostics::start(juce::File::getSpecialLocation(juce::File::currentExecutableFile).getSiblingFile("data/diagnostics"));

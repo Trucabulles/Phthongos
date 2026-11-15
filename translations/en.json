@@ -1295,6 +1295,7 @@
   "Hors registre piano 88 touches": "Outside the 88-key piano range",
   "Édition MIDI": "MIDI editing",
   "MIDI importé.": "MIDI imported.",
+  "MIDI importé. Événements de note ignorés : {count}.": "MIDI imported. Note events skipped: {count}.",
   "Préparation du piano et du projet MIDI…": "Preparing piano and MIDI project…",
   "Projet MIDI prêt · Dessinez des notes ou préécoutez au clavier.": "MIDI project ready · Draw notes or audition on the keyboard.",
   "Saisie MIDI": "MIDI step input",

@@ -199,9 +199,13 @@ void App::importMidi(const String& requested) {
                    hiddenParts.clear();legacyVisiblePart=-1;voiceLevels=object({});
                    mode = 1;
                    updateResult(v["result"]);
-                   prepare([this](var) {
-                     setBusy(false, tr(juce::String::fromUTF8(
-                                        "MIDI importé.")));
+                   const auto ignored = static_cast<int>(v["ignored_note_events"]);
+                   prepare([this, ignored](var) {
+                     auto message = tr(String::fromUTF8("MIDI importé."));
+                     if (ignored > 0)
+                       message = tr(String::fromUTF8("MIDI importé. Événements de note ignorés : {count}."))
+                                     .replace("{count}", String(ignored));
+                     setBusy(false, message);
                    });
                    resized();
                  },

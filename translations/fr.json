@@ -1295,6 +1295,7 @@
   "Hors registre piano 88 touches": "Hors registre piano 88 touches",
   "Édition MIDI": "Édition MIDI",
   "MIDI importé.": "MIDI importé.",
+  "MIDI importé. Événements de note ignorés : {count}.": "MIDI importé. Événements de note ignorés : {count}.",
   "Préparation du piano et du projet MIDI…": "Préparation du piano et du projet MIDI…",
   "Projet MIDI prêt · Dessinez des notes ou préécoutez au clavier.": "Projet MIDI prêt · Dessinez des notes ou préécoutez au clavier.",
   "Saisie MIDI": "Saisie MIDI",

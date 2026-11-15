@@ -96,12 +96,32 @@ Parsed Source::parse(const std::vector<std::string>& gmNames) const {
     }
     std::sort(programs.begin(),programs.end());
     std::map<std::tuple<std::size_t,int,int>,PartId> routeIds;
+    using NoteKey = std::tuple<int,int,int>;
     struct Held { std::uint64_t tick;int velocity;Part part; };
+    struct UnmatchedEvent {
+        NoteKey key;
+        std::size_t track;
+        std::uint64_t tick;
+        std::optional<Held> start;
+        std::uint8_t releaseVelocity;
+    };
     struct Completed { Note note;std::uint64_t start,end;std::uint8_t off; };
     std::vector<Completed> completed;
+    std::vector<UnmatchedEvent> unmatched;
+    auto complete = [&](const Held& h, int pitch, std::uint64_t end, std::uint8_t releaseVelocity) {
+        double a=out.clock.seconds(h.tick),b=out.clock.seconds(end);
+        if(end<=h.tick || static_cast<float>(b)<=static_cast<float>(a)){
+            out.ignoredNoteEvents+=2;
+            return;
+        }
+        if(b>1200)fail("MIDI de plus de 20 minutes : limite du lecteur interne.");
+        Note n;n.part=h.part;n.pitch=pitch;n.velocity=h.velocity;n.velocityNormalised=static_cast<float>(h.velocity)/127.f;n.start=static_cast<float>(a);n.end=static_cast<float>(b);
+        completed.push_back({n,h.tick,end,releaseVelocity});
+        if(completed.size()>100000)fail("Plus de 100 000 notes MIDI.");
+    };
     for(std::size_t t=0;t<out.tracks.size();++t){auto& events=out.tracks[t];std::string trackName="Piste "+std::to_string(t+1);
         for(auto& e:events)if(e.isMeta(3)){trackName=label(e.data);break;}
-        std::uint8_t p=0;std::map<std::tuple<int,int,int>,std::deque<Held>> held;
+        std::uint8_t p=0;std::map<NoteKey,std::deque<Held>> held;
         for(std::size_t i=0;i<events.size();++i){auto& e=events[i];if(e.isMeta(33))p=e.data[0];if(!e.note())continue;
             int channel=e.status&15,key=e.data[0],vel=e.data[1];
             if((e.status&240)==144&&vel){auto routeKey=std::make_tuple(t,p,channel);auto it=routeIds.find(routeKey);
@@ -112,16 +132,40 @@ Parsed Source::parse(const std::vector<std::string>& gmNames) const {
                 std::string instrument=program<gmNames.size()?gmNames[program]:"Instrument "+std::to_string(program);
                 Part part{id,program,channel==9,trackName+u8" · "+instrument};
                 out.routes.emplace(id,Route{t,static_cast<std::uint8_t>(channel),p,part});held[{p,channel,key}].push_back({e.tick,vel,part});
-            }else{auto& queue=held[{p,channel,key}];if(queue.empty())continue;auto h=queue.front();queue.pop_front();
-                if(e.tick<=h.tick)fail("Une note MIDI a une durée nulle. Corrigez-la avant l’import.");
-                double a=out.clock.seconds(h.tick),b=out.clock.seconds(e.tick);if(b>1200)fail("MIDI de plus de 20 minutes : limite du lecteur interne.");
-                if(static_cast<float>(b)<=static_cast<float>(a))fail("Une note est trop courte pour la précision temporelle de l’éditeur.");
-                Note n;n.part=h.part;n.pitch=key;n.velocity=h.velocity;n.velocityNormalised=static_cast<float>(h.velocity)/127.f;n.start=static_cast<float>(a);n.end=static_cast<float>(b);
-                completed.push_back({n,h.tick,e.tick,static_cast<std::uint8_t>((e.status&240)==128?vel:0)});
-                if(completed.size()>100000)fail("Plus de 100 000 notes MIDI.");
+            }else{
+                const NoteKey noteKey{p,channel,key};
+                auto& queue=held[noteKey];
+                auto releaseVelocity=static_cast<std::uint8_t>((e.status&240)==128?vel:0);
+                if(queue.empty()){
+                    unmatched.push_back({noteKey,t,e.tick,std::nullopt,releaseVelocity});
+                    continue;
+                }
+                complete(queue.front(),key,e.tick,releaseVelocity);
+                queue.pop_front();
             }
-        }for(auto& entry:held)if(!entry.second.empty())fail("Le MIDI contient des notes sans fin. Corrigez-le avant l’import.");
+        }
+        for(const auto& [key,starts]:held)
+            for(const auto& start:starts)
+                unmatched.push_back({key,t,start.tick,start,0});
     }
+    // Prefer within-track pairs. A remaining release can close one earlier
+    // unmatched attack on the same MIDI port, channel and pitch.
+    std::stable_sort(unmatched.begin(),unmatched.end(),[](const auto& a,const auto& b){
+        return std::make_tuple(a.tick,a.start.has_value())<std::make_tuple(b.tick,b.start.has_value());
+    });
+    std::map<NoteKey,std::vector<const UnmatchedEvent*>> pending;
+    for(const auto& event:unmatched){
+        auto& starts=pending[event.key];
+        if(event.start){
+            starts.push_back(&event);
+        }else if(starts.size()==1 && starts.front()->track!=event.track){
+            complete(*starts.front()->start,std::get<2>(event.key),event.tick,event.releaseVelocity);
+            starts.clear();
+        }else{
+            ++out.ignoredNoteEvents;
+        }
+    }
+    for(const auto& [key,starts]:pending)out.ignoredNoteEvents+=starts.size();
     if(completed.empty()&&!createdEmpty)fail("Le MIDI ne contient aucune note.");
     std::stable_sort(completed.begin(),completed.end(),[](const auto& a,const auto& b){return std::make_tuple(a.note.start,a.note.key(),a.note.pitch)<std::make_tuple(b.note.start,b.note.key(),b.note.pitch);});
     for(auto& n:completed){n.note.id=out.notes.size()+1;n.note.sourceIds={n.note.id};out.notes.push_back(n.note);out.noteTicks.emplace_back(n.start,n.end,n.off);}

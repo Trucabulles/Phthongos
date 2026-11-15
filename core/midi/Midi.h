@@ -26,6 +26,7 @@ struct Parsed {
     std::vector<std::tuple<std::uint64_t,std::uint64_t,std::uint8_t>> noteTicks;
     std::map<PartId,Route> routes;
     Clock clock;
+    std::size_t ignoredNoteEvents = 0;
 };
 struct Source {
     bool createdEmpty = false;
